@@ -1,7 +1,11 @@
 FROM alpine:3.11
 
 RUN apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/v3.11/community/ php7 php7-session php7-pecl-redis php7-pecl-apcu php7-gettext php7-fpm php7-mbstring php7-ctype php7-dom php7-gd php7-iconv php7-json php7-xml php7-xmlreader php7-xmlwriter php7-posix php7-zlib php7-zip php7-curl php7-fileinfo php7-opcache php7-openssl php7-mcrypt php7-ldap php7-intl php7-mysqli php7-mysqlnd php7-simplexml php7-imagick php7-exif php7-phar &&\
-    rm -rf /var/cache/apk/*
+    addgroup -g 82 www-data &&\
+    addgroup -g 101 nginx &&\
+    adduser -h /var/lib/php7 -D -u 100 -G nginx -s /bin/false nginx &&\
+    addgroup nginx www-data &&\
+    rm -rf /var/cache/apk/* &&\
 
 COPY files/etc/php7 /etc/php7
 
