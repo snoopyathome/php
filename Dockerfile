@@ -5,7 +5,7 @@ RUN apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/v3.11
     addgroup -g 101 nginx &&\
     adduser -h /var/lib/php7 -D -u 100 -G nginx -s /bin/false nginx &&\
     addgroup nginx www-data &&\
-    rm -rf /var/cache/apk/* &&\
+    rm -rf /var/cache/apk/*
 
 COPY files/etc/php7 /etc/php7
 
