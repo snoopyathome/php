@@ -11,4 +11,4 @@ COPY files/etc/php7 /etc/php7
 
 #HEALTHCHECK --start-period=10s --interval=30s --timeout=30s --retries=10 CMD curl -f http://localhost/index.php:80 || exit 1
 
-CMD ["php-fpm7"]
+CMD ["php-fpm7", "-F"]
